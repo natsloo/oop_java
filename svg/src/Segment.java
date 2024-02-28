@@ -13,10 +13,6 @@ public class Segment {
         return String.format(Locale.ENGLISH,
                 "  <line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:red;stroke-width:2\" />\n", start.x,start.y,end.x,end.y);
     }
-
-    public Point getStart(){
-        return start;
-    }
     public double length(){
         return Math.hypot(end.x- start.x,end.y-start.y);
     }
