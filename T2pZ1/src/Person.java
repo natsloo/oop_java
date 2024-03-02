@@ -10,4 +10,16 @@ public class Person {
     public String getFullName(){
         return name + " " + surname;
     }
+
+    public static class Teacher extends Person{
+        public Teacher (String name, String surname){
+            super(name, surname);
+        }
+    }
+
+    public static class Student extends Person{
+        public Student(String name, String surname){
+            super(name, surname);
+        }
+    }
 }
