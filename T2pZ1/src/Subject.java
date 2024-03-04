@@ -23,5 +23,9 @@ public class Subject {
         }
         return result;
     }
+
+    public void addStudent(Person.Student student){
+        students.add(student);
+    }
 }
 
