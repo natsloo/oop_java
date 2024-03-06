@@ -8,11 +8,21 @@ public class Main {
         Segment seg=new Segment(point,new Point(6.7,8.5));
         System.out.println(seg.length());
         System.out.println(seg.toSvg()); */
+        Style style=new Style("pink","black",3.0);
         Polygon poly = new Polygon(new Point[]{
                 new Point(25, 43),
                 new Point(60, 80),
                 new Point(50, 40)
-        });
+        },style);
+
         System.out.println(poly.toSvg());
+        Style s=new Style("pink","black",3.0);
+        Polygon p = new Polygon(new Point[]{
+                new Point(24, 53),
+                new Point(12, 32),
+                new Point(10, 80)
+        },s);
+
+        System.out.println(p.toSvg());
     }
 }
