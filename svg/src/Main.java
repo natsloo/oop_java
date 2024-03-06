@@ -24,5 +24,10 @@ public class Main {
         },s);
 
         System.out.println(p.toSvg());
+        SvgScene scene=new SvgScene();
+        scene.add(poly);
+        scene.add(p);
+        scene.save("C:\\Users\\natal\\Desktop\\studia\\I ROK\\II semestr\\programowanie obiektowe\\oop_java\\svg\\out.html"); //chyba nie dziala?
     }
+
 }
