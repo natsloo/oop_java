@@ -41,9 +41,20 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class SvgScene {
+
+    List<String>
+    public static SvgScene instance;
+
+    public Scene getInstance(){
+        if(instance==null){
+            instance = new SvgScene();
+        }
+        return instance;
+    }
     private ArrayList<Shape> shapes = new ArrayList<>();
     public void add(Shape polygon)
     {
