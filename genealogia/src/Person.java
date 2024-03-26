@@ -10,6 +10,7 @@ public class Person {
     private final String name;
     private final LocalDate birthDate;
     private final LocalDate deathDate;
+    private List<Person> parents = new ArrayList<>();
 
     public Person(String name, LocalDate birthDate, LocalDate deathDate) {
         this.name = name;
@@ -48,7 +49,7 @@ public class Person {
                 person.validateLifespan();
                 person.validateAmbiguity(people);
                 people.add(person);
-                peopleWithParentStrings.put(person.name, PersonWithParentStrings);
+                peopleWithParentStrings.put(person.name, personWithParentStrings);
             } catch (NegativeLifespanException | AmbiguousPersonException e) {
                 System.err.println(e.getMessage());
                 e.printStackTrace();
@@ -71,7 +72,9 @@ public class Person {
         return deathDate;
     }
 
-    public void addParent(Person person)
+    public void addParent(Person parent){
+        parents.add(parent);
+    }
     private void validateLifespan() throws NegativeLifespanException {
         if(deathDate!=null && deathDate.isBefore(birthDate)){
             throw new NegativeLifespanException(this);

@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class PersonWithParentStrings {
     final public Person person;
-    final public List<String> parentNames = new ArrayList<>();
+    final public List<String> parentNames;
 
     private PersonWithParentStrings(Person person,List<String> parentNames) {
         this.person = person;
@@ -12,7 +12,8 @@ public class PersonWithParentStrings {
     }
 
     static public PersonWithParentStrings fromCsvLine(String line){
-        Person inner = Person.fromCsvLine(line);
+        Person person = Person.fromCsvLine(line);
+        List<String> parentNames = new ArrayList<>();
         String[] values = line.split(",",-1);
         for(int i=3;i<=4;i++){
             if(!values[i].isEmpty())
