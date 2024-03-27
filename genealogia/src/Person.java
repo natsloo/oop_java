@@ -140,6 +140,37 @@ public class Person {
     }
     public static List<Person> sortedByBirth(List<Person> people){
         return people.stream()
-                .sorted((person1,person2)->person1.getBirthDate().compareTo(person2.birthDate)).collect(Collectors.toList());
+                .sorted(Comparator.comparing(Person::getBirthDate))
+                .collect(Collectors.toList());
+    }
+    public static List<Person> sortByLifespan(List<Person> people){
+
+        Function<Person, Long> getLifespan = person
+                -> person.deathDate.toEpochDay() - person.birthDate.toEpochDay();
+
+        return people.stream()
+                .filter(person -> person.deathDate != null)
+                .sorted((o2, o1) -> Long.compare(getLifespan.apply(o1), getLifespan.apply(o2)))
+//                .sorted(Comparator.comparingLong(getLifespan::apply))
+//                .sorted(Collections.reverseOrder())
+                .toList();
+    }
+//    public static List<Person> sortedByBirth(List<Person> people){
+//        return people.stream()
+//                .sorted((person1,person2)->person1.getBirthDate().compareTo(person2.birthDate)).collect(Collectors.toList());
+//    }
+//    public static List<Person> sortByLifespan(List<Person> people){
+//        Function<Person,Long> getLifespan = person -> person.deathDate.toEpochDay()-person.birthDate.toEpochDay();
+//
+//        return people.stream()
+//                .filter(person->person.deathDate != null)
+//                .sorted(Comparator.comparingLong(getLifespan::apply))
+//                .toList().reversed();
+//    }
+    public static Person findOldestLiving(List<Person> people){
+        return people.stream()
+                .filter(person -> person.deathDate==null)
+                .min(Comparator.comparing(Person::getBirthDate))
+                .get();
     }
 }
